@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyGo | Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="welcome-leftside">
+        <div class="welcome-content">
+          <h1>StudyGo Task Manager</h1>
+          <p class="quotes">"Stay organized, Stay Ahead"</p>
+          <div class="features">
+            <p>Track All Assignment</p>
+            <p>Get Email Reminders</p>
+            <p>Set Priority Level</p>
+            <p>Easy To Use</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="Right-side">
+        <!-- LOGIN FORM -->
+        <div id="loginForm" class="login-box">
+          <h2>Welcome Back!</h2>
+          <div class="input-group">
+            <input type="email" id="loginEmail" placeholder="Email Address" />
+          </div>
+          <div class="input-group">
+            <input type="password" id="loginPassword" placeholder="Password" />
+          </div>
+          <button id="loginBtn" class="btn">Sign In</button>
+          <div class="forgot-link">
+            <a href="#" id="forgotPassword">Forgot Password?</a>
+          </div>
+          <div class="divider">
+            <span>or</span>
+          </div>
+          <div class="create-account">
+            <p>
+              New to StudyGo?
+              <a href="#" id="showSignupLink">Create An Account</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- SIGNUP FORM -->
+        <div id="signupForm" class="login-box">
+          <h2>Create An Account</h2>
+          <div class="input-group">
+            <input type="text" id="signupName" placeholder="Full Name" />
+          </div>
+          <div class="input-group">
+            <input type="email" id="signupEmail" placeholder="Email Address" />
+          </div>
+          <div class="input-group">
+            <input type="password" id="signupPassword" placeholder="Password" />
+          </div>
+          <button id="signupBtn" class="btn">Sign Up</button>
+          <div class="back-link">
+            <a href="#" id="showLoginLink">← Back to Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+  </body>
+</html>

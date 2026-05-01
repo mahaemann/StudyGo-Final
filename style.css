@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+/* LEFT SIDE - ANIMATED GRADIENT BACKGROUND */
+.welcome-leftside {
+  flex: 1;
+  background: linear-gradient(
+    135deg,
+    #e3f2fd,
+    #bbdef5,
+    #517693,
+    #bbdef5,
+    #e3f2fd
+  );
+  background-size: 400% 400%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.welcome-content {
+  max-width: 500px;
+}
+
+/* BOUNCING HEADING */
+.welcome-content h1 {
+  font-size: 48px;
+  color: #0d3b66;
+  margin-bottom: 15px;
+  display: inline-block;
+  animation: bounce 2s ease infinite;
+  margin-left: 30px;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* QUOTE WITH PULSE */
+.quotes {
+  font-size: 20px;
+  color: #1976d2;
+  font-style: italic;
+  margin-bottom: 30px;
+  border-left: 4px solid #1976d2;
+  padding-left: 15px;
+  animation: pulse 3s ease infinite;
+  margin-left: 30px;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* FEATURES CONTAINER */
+.features {
+  margin-top: 40px;
+}
+
+/* FADE IN ANIMATION FOR EACH FEATURE */
+.features p {
+  font-size: 18px;
+  color: #0d3b66;
+  margin-bottom: 15px;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  margin-left: 30px;
+}
+
+.features p:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.features p:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.features p:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.features p:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FLOATING CHECKMARKS */
+.features p::before {
+  content: "✓";
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  animation: floatCheck 2s ease infinite;
+}
+
+@keyframes floatCheck {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* RIGHT SIDE - Login Section */
+.Right-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h2 {
+  font-size: 32px;
+  color: #0d3b66;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #0d47a1;
+}
+
+.forgot-link {
+  text-align: right;
+  margin-top: 12px;
+}
+
+.forgot-link a,
+.create-account a,
+.back-link a {
+  color: #1976d2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-link a:hover,
+.create-account a:hover,
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  background: white;
+  padding: 0 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* HIDE SIGNUP FORM INITIALLY */
+#signupForm {
+  display: none;
+}

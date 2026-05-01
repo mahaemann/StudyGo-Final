@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyGo | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- This is my LEFT SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-logo">
+          <h2>StudyGo</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="dashboard"
+            >📊 Dashboard</a
+          >
+          <a href="#" class="nav-item" data-page="assignments"
+            >📝 Assignments</a
+          >
+          <a href="#" class="nav-item" data-page="exams">📚 Exams</a>
+          <a href="#" class="nav-item" data-page="tasks">✅ Tasks</a>
+          <a href="#" class="nav-item" data-page="vacation">🌴 Vacation</a>
+          <a href="#" class="nav-item" data-page="xtra">⚙️ Xtra</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="logout-btn">🚪 Logout</button>
+        </div>
+      </div>
+
+      <!-- This includes the MAIN CONTENT  -->
+      <div class="main-content">
+        <!--  DASHBOARD SECTION -->
+        <div id="dashboardSection" class="page-section active-section">
+          <!-- Header with Greeting and Clock -->
+          <div class="dashboard-header">
+            <div class="greeting-box">
+              <h2 id="greeting">Good Morning,</h2>
+              <p id="userName">Student</p>
+            </div>
+            <div class="clock-box">
+              <div class="live-clock">
+                <span id="currentDay">Monday</span>
+                <span id="currentDate">April 10, 2026</span>
+                <span id="currentTime">12:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📋</div>
+              <div class="stat-info">
+                <h3>Total Tasks</h3>
+                <p class="stat-number" id="totalTasks">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-info">
+                <h3>Pending</h3>
+                <p class="stat-number" id="pendingTasks">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⚠️</div>
+              <div class="stat-info">
+                <h3>Deadline Passed</h3>
+                <p class="stat-number" id="deadlinePassed">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🔥</div>
+              <div class="stat-info">
+                <h3>Streak</h3>
+                <p class="stat-number" id="streakCount">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-info">
+                <h3>Exams Done</h3>
+                <p class="stat-number" id="examsDone">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📘</div>
+              <div class="stat-info">
+                <h3>Assignments Done</h3>
+                <p class="stat-number" id="assignmentsDone">0</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Focus Timer -->
+          <div class="timer-card">
+            <h3>🎯 Focus Timer</h3>
+            <div class="timer-display">
+              <span id="timerMinutes">25</span>:<span id="timerSeconds"
+                >00</span
+              >
+            </div>
+            <div class="timer-controls">
+              <input
+                type="number"
+                id="customTimerMinutes"
+                placeholder="Minutes"
+                value="25"
+              />
+              <button id="setTimerBtn" class="timer-btn">Set</button>
+              <button id="startTimerBtn" class="timer-btn start-btn">
+                ▶ Start
+              </button>
+              <button id="resetTimerBtn" class="timer-btn reset-btn">
+                🔄 Reset
+              </button>
+            </div>
+          </div>
+
+          <!--  ADDED: RECENT ACTIVITY SECTION  -->
+          <div class="recent-activity">
+            <h3>📋 Recent Tasks & Assignments</h3>
+            <div id="dashboardItemsList" class="items-list">
+              <!-- This is where All items (assignments, exams, tasks) will appear here -->
+            </div>
+          </div>
+          <!-- END OF ADDED SECTION  -->
+        </div>
+
+        <!--  ASSIGNMENTS SECTION  -->
+        <div id="assignmentsSection" class="page-section">
+          <div class="section-header">
+            <h2>📝 Assignments</h2>
+            <button class="add-btn" id="showAddAssignmentBtn">
+              + Add Assignment
+            </button>
+          </div>
+
+          <!-- Add Assignment Form (hidden initially) -->
+          <div id="addAssignmentForm" class="add-form">
+            <h3>Add New Assignment</h3>
+            <input
+              type="text"
+              id="assignmentTitle"
+              placeholder="Assignment title"
+            />
+            <input type="text" id="assignmentSubject" placeholder="Subject" />
+            <input type="datetime-local" id="assignmentDueDate" />
+            <select id="assignmentPriority">
+              <option value="High">🔴 High Priority</option>
+              <option value="Medium">🟡 Medium Priority</option>
+              <option value="Low">🟢 Low Priority</option>
+            </select>
+            <textarea
+              id="assignmentInstructions"
+              placeholder="Instructions (optional)"
+            ></textarea>
+            <button id="saveAssignmentBtn" class="btn">Save Assignment</button>
+            <button id="cancelAssignmentBtn" class="btn cancel-btn">
+              Cancel
+            </button>
+          </div>
+
+          <!-- Assignments List -->
+          <div id="assignmentsList" class="items-list">
+            <!-- Assignments will appear here -->
+          </div>
+        </div>
+
+        <!-- EXAMS SECTION -->
+        <div id="examsSection" class="page-section">
+          <div class="section-header">
+            <h2>📚 Exams</h2>
+            <button class="add-btn" id="showAddExamBtn">+ Add Exam</button>
+          </div>
+
+          <!-- Add Exam Form (hidden initially) -->
+          <div id="addExamForm" class="add-form">
+            <h3>Add New Exam</h3>
+            <input type="text" id="examTitle" placeholder="Exam name" />
+            <input type="text" id="examSubject" placeholder="Subject" />
+            <input type="datetime-local" id="examDate" />
+            <select id="examPriority">
+              <option value="High">🔴 High Priority</option>
+              <option value="Medium">🟡 Medium Priority</option>
+              <option value="Low">🟢 Low Priority</option>
+            </select>
+            <button id="saveExamBtn" class="btn">Save Exam</button>
+            <button id="cancelExamBtn" class="btn cancel-btn">Cancel</button>
+          </div>
+
+          <!-- Exams List -->
+          <div id="examsList" class="items-list">
+            <!-- Exams will appear here -->
+          </div>
+        </div>
+
+        <!--  TASKS SECTION -->
+        <div id="tasksSection" class="page-section">
+          <div class="section-header">
+            <h2>✅ Tasks</h2>
+            <button class="add-btn" id="showAddTaskBtn">+ Add Task</button>
+          </div>
+
+          <!-- Add Task Form (hidden initially) -->
+          <div id="addTaskForm" class="add-form">
+            <h3>Add New Task</h3>
+            <input type="text" id="taskTitle" placeholder="Task name" />
+            <textarea id="taskDescription" placeholder="Description"></textarea>
+            <input type="datetime-local" id="taskDueDate" />
+            <select id="taskPriority">
+              <option value="High">🔴 High Priority</option>
+              <option value="Medium">🟡 Medium Priority</option>
+              <option value="Low">🟢 Low Priority</option>
+            </select>
+            <button id="saveTaskBtn" class="btn">Save Task</button>
+            <button id="cancelTaskBtn" class="btn cancel-btn">Cancel</button>
+          </div>
+
+          <!-- Tasks List -->
+          <div id="tasksList" class="items-list">
+            <!-- Tasks will appear here -->
+          </div>
+        </div>
+
+        <!--  VACATION SECTION  -->
+        <div id="vacationSection" class="page-section">
+          <div class="section-header">
+            <h2>🌴 Vacation</h2>
+            <button class="add-btn" id="showAddVacationBtn">
+              + Plan Vacation
+            </button>
+          </div>
+
+          <!-- Add Vacation Form (hidden initially) -->
+          <div id="addVacationForm" class="add-form">
+            <h3>Plan Your Vacation</h3>
+            <input
+              type="text"
+              id="vacationTitle"
+              placeholder="Destination / Reason"
+            />
+            <input type="date" id="vacationStartDate" />
+            <input type="date" id="vacationEndDate" />
+            <button id="saveVacationBtn" class="btn">Save Vacation</button>
+            <button id="cancelVacationBtn" class="btn cancel-btn">
+              Cancel
+            </button>
+          </div>
+
+          <!-- Vacations List -->
+          <div id="vacationsList" class="items-list">
+            <!-- Vacations will appear here -->
+          </div>
+        </div>
+
+        <!--  XTRA SECTION  -->
+        <div id="xtraSection" class="page-section">
+          <div class="section-header">
+            <h2>⚙️ Xtra</h2>
+          </div>
+
+          <div class="xtra-card">
+            <h3>🌓 Dark Mode</h3>
+            <label class="switch">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider round"></span>
+            </label>
+            <p>Toggle dark mode for comfortable night studying</p>
+          </div>
+
+          <div class="xtra-card">
+            <h3>ℹ️ About StudyGo</h3>
+            <p>
+              StudyGo is a task management website designed for students to
+              track assignments, exams, and tasks. Get email reminders before
+              deadlines, set priorities, and stay organized!
+            </p>
+            <p><strong>Features:</strong></p>
+            <ul>
+              <li>✅ Track assignments, exams, and tasks</li>
+              <li>📧 Automatic email reminders</li>
+              <li>🎯 Focus timer for productivity</li>
+              <li>📊 Progress tracking</li>
+              <li>🌓 Dark mode support</li>
+            </ul>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Made with ❤️ for students</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
